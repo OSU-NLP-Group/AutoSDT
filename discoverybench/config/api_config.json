@@ -1,0 +1,22 @@
+{
+    "apis": {
+        "openai": {
+            "api_key": ""
+        },
+        "anthropic": {
+            "api_key": ""
+        },
+        "together": {
+            "api_key": ""
+        },
+        "google": {
+            "api_key": ""
+        },
+        "qwen": {
+            "api_key": ""
+        },
+        "azure": {
+            "api_key": "${AZURE_OPENAI_KEY}"
+        }
+    }
+}

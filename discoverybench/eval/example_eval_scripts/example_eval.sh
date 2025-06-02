@@ -1,0 +1,11 @@
+#!/bin/bash
+
+query="What was the percentage increase in median wealth among black females from 1985 to 1990?"
+
+gold_hypo="The largest increases in median wealth from 1985 to 1990 were among black females, with a percentage increase of 1385.71%.",
+
+gen_hypo="The percentage increase in median wealth among black females from 1985 to 1990 is approximately 1385.71%. Scientific Hypothesis: In the context of the provided dataset, which includes race, sex, and wealth variables from the National Longitudinal Study of Youth's 1979 cohort, it is hypothesized that there is a significant increase in median wealth for black females from 1985 to 1990. This hypothesis is supported by the data showing an approximate 1385.71% increase in median wealth for this demographic over the five-year period. Further investigation would be required to determine the cause of this increase and its statistical significance, as well as its implications on social and economic factors affecting black females during that time."
+
+metadata_path="/fs/ess/PAA0201/yifeili/discoverybench/discoverybench/real/test/nls_incarceration/metadata_14.json"
+
+echo $(python3 discovery_eval.py --gold_hypo "$gold_hypo" --pred_hypo "$gen_hypo" --metadata_path "$metadata_path" --metadata_type "real" "$query")
