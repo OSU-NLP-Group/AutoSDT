@@ -36,7 +36,7 @@ Despite long-standing efforts in accelerating scientific discovery with AI, buil
 
 AutoSDT leverages the coding capabilities and parametric knowledge of large language models (LLMs) to search from diverse sources, identify ecologically valid scientific tasks, and synthesize both task instructions and code solutions automatically. Using this pipeline, we construct AutoSDT-5K, a dataset of 5,404 scientific coding tasks spanning four scientific disciplines and using 756 unique Python packages.
 - To the best of our knowledge, AutoSDT-5K is the largest and the only automatically collected open dataset for data-driven scientific discovery so far.
-- Models trained on AutoSDT-5K, named AutoSDT-Coder, AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, **doubling** the performance of its base model.
+- After fine-tuning Qwen2.5-Coder-32B-Instruct on AutoSDT-5K, the model reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, **doubling** the performance of its base model.
 - It also improves the hypothesis matching score by 17.4% relatively on DiscoveryBench, significantly narrowing the gap between open-weight models and proprietary ones.
 
 ## Installation
