@@ -116,6 +116,9 @@ python cal_eval_avg.py
 ```
 to compute the final results.
 
+## Contact
+[mailto:li.14042@osu.edu](Yifei Li), [mailto:moussa.45@osu.edu](Hanane Nour Moussa), [mailto:sun.397@osu.edu](Huan Sun), The Ohio State University
+
 ## License
 
 We ensure that all 1325 repositories composing the final tasks in AutoSDT-5K allow for non-proprietary use. We list the licenses and the number of corresponding repositories in the following table:
@@ -154,6 +157,8 @@ We manually checked the remaining 16 repositories with custom licenses and ensur
 | usnistgov/atomgpt                        |
 
 There are also 317 repositories without any license information. We assume that these repositories are permissive for academic purposes.
+
+Code under this repo is licensed under a MIT License.
 
 ## Disclaimer
 AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper. If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
