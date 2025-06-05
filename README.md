@@ -18,33 +18,13 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 
 Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performance as GPT-4o (2024-05-13):
 <div align="left">
-  <img src="AutoSDT-Fig1.png" width="80%" title="Figure1">
+  <img src="AutoSDT-Fig1.png" width="60%" title="Figure1">
 </div>
-
-We list the results of our small MAmmoTH-7B-Mistral as follows:
-
-| **Models**                          | **SR (%, ↑)**     | **VER (%, ↑)**    |
-|------------------------------------|-------------------|-------------------|
-| *Proprietary Reasoning Models*     |                   |                   |
-| Claude-3.7-Sonnet                  | 18.6 (±0.8)       | 51.6 (±4.7)       |
-| OpenAI o1-preview                  | **23.9 (±0.5)**   | **56.2 (±1.7)**   |
-| *Proprietary Non-Reasoning Models*|                   |                   |
-| GPT-4o (2024-05-13)                | 7.5 (±0.5)        | 42.2 (±1.6)       |
-| GPT-4o (2024-11-20)                | 11.4 (±1.2)       | 43.1 (±2.1)       |
-| Claude-3.5-Sonnet-v1               | 11.8 (±2.1)       | 36.0 (±1.2)       |
-| *Open-Weight Models*               |                   |                   |
-| Llama-3.1-Instruct-70B             | 3.6 (±2.0)        | 22.2 (±0.9)       |
-| Llama-3.1-Instruct-405B            | 3.6 (±0.5)        | 32.0 (±0.5)       |
-| Qwen2.5-Coder-Instruct-32B         | 3.9 (±0.8)        | 28.4 (±0.8)       |
-| *Fine-tuned Open-Weight Models (Ours)* |               |                   |
-| AutoSDT-Coder-7B                   | 2.3 (±1.2)        | 27.5 (±3.3)       |
-| AutoSDT-Coder-14B                  | 5.9 (±1.6)        | 35.0 (±2.5)       |
-| AutoSDT-Coder-32B                  | 7.8 (±1.4)        | 36.0 (±5.2)       |
 
 ## Table-of-Contents
 - [📌 Introduction](#introduction)
 - [⚙️ Installation](#installation)
-- [🚀 AutoSDT-Pipeline] (#AutoSDT-Pipeline)
+- [🚀 AutoSDT-Pipeline](#AutoSDT-Pipeline)
 - [🛠️ Training and Inference](#training-and-inference)
 - [📜 License](#license)
 - [📖 Citation](#citation)
