@@ -26,6 +26,7 @@ Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performan
 - [⚙️ Installation](#installation)
 - [🚀 AutoSDT-Pipeline](#AutoSDT-Pipeline)
 - [🛠️ Training and Inference](#training-and-inference)
+- [📧 Contact](#contact)
 - [📜 License](#license)
 - [📄 Disclaimer](#disclaimer)
 - [📖 Citation](#citation)
@@ -117,7 +118,7 @@ python cal_eval_avg.py
 to compute the final results.
 
 ## Contact
-[mailto:li.14042@osu.edu](Yifei Li), [mailto:moussa.45@osu.edu](Hanane Nour Moussa), [mailto:sun.397@osu.edu](Huan Sun), The Ohio State University
+[Yifei Li](mailto:li.14042@osu.edu), [Hanane Nour Moussa](mailto:moussa.45@osu.edu), [Huan Sun](mailto:sun.397@osu.edu), The Ohio State University
 
 ## License
 
