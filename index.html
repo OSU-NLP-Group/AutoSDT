@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists">
+  <meta name="keywords" content="AutoSDT">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> AutoSDT: Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+/Users/panlu/Library/Mobile Documents/com~apple~CloudDocs/ImageMath/visual-mathqa-server/data_final/images
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <!-- <link rel="icon" href="static/images/icon.png"> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+  <style>
+    pre {
+        max-height: 400px; 
+        overflow-x: auto; 
+        overflow-y: auto;
+        background-color: #f0f0f0; 
+        padding: 10px;
+        border: 1px solid #ccc; 
+        text-align: left;
+    }
+</style>
+<script>
+  function loadJSON(file, elementId) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              document.getElementById(elementId).textContent = xhr.responseText;
+              hljs.highlightElement(document.getElementById(elementId));
+          }
+      };
+      xhr.open('GET', file, true);
+      xhr.send();
+  }
+
+  loadJSON('./static/example/plan_1.json', 'json1');
+  loadJSON('./static/example/plan_6.json', 'json2');
+  loadJSON('./static/example/plan_11.json', 'json3');
+  loadJSON('./static/example/plan_16.json', 'json4');
+  loadJSON('./static/example/plan_21.json', 'json5');
+  loadJSON('./static/example/plan_26.json', 'json6');
+  loadJSON('./static/example/plan_31.json', 'json7');
+  loadJSON('./static/example/plan_36.json', 'json8');
+  loadJSON('./static/example/plan_41.json', 'json9');
+</script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <!-- <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a> -->
+        <!-- @PAN TODO: consider adding links? -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://osu-nlp-group.github.io/ScienceAgentBench/">
+              <b>ScienceAgentBench</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>
+            <a class="navbar-item" href="https://imageomics.github.io/bioclip/">
+              <b>BioCLIP</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>
+            <a class="navbar-item" href="https://osu-nlp-group.github.io/LLM4Chem/">
+              <b>LlaSMol</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>
+            <a class="navbar-item" href="https://tiger-ai-lab.github.io/MAmmoTH/">
+              <b>MAmmoTH</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>
+            <a class="navbar-item" href="https://osu-nlp-group.github.io/TravelPlanner/">
+              <b>TravelPlanner</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>
+            <a class="navbar-item" href="https://osu-nlp-group.github.io/Mind2Web/">
+              <b>Mind2Web</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;"></p>
+            </a>  
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">
+              <!-- <img src="static/images/icon.png" style="width:2em;vertical-align: middle" alt="Logo" /> -->
+              <span class="mathvista" style="vertical-align: middle">AutoSDT</span>
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle">
+              Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Yifei Li<sup style="color:#6fbf73;">1,†*</sup>,</span>
+              <span class="author-block">Hanane Nour Moussa<sup style="color:#6fbf73;">1,†*</sup>,</span>
+              <span class="author-block">Ziru Chen<sup style="color:#6fbf73;">1,†</sup>,</span>
+              <span class="author-block">Shijie Chen<sup style="color:#6fbf73;">1,†</sup>,</span>
+              <span class="author-block">Botao Yu<sup style="color:#6fbf73;">1,†</sup>,</span>
+              <span class="author-block">Mingyi Xue<sup style="color:#6fbf73;">6,◇</sup>,</span>
+              <span class="author-block">Benjamin Burns<sup style="color:#6fbf73;">1,†</sup>,</span>
+              <span class="author-block">Tzu-Yao Chiu<sup style="color:#6fbf73;">3</sup>,</span>
+              <span class="author-block">Vishal Dey<sup style="color:#6fbf73;">1,†</sup>,</span>
+              <span class="author-block">Zitong Lu<sup style="color:#6fbf73;">3,†</sup>,</span>
+              <span class="author-block">Chen Wei<sup style="color:#6fbf73;">5,◇</sup>,</span>
+              <span class="author-block">Qianheng Zhang<sup style="color:#6fbf73;">5,◇</sup>,</span>
+              <span class="author-block">Tianyu Zhang<sup style="color:#6fbf73;">3</sup>,</span>
+              <span class="author-block">Song Gao<sup style="color:#6fbf73;">5,◇</sup>,</span>
+              <span class="author-block">Xuhui Huang<sup style="color:#6fbf73;">6,◇</sup>,</span>
+              <span class="author-block">Xia Ning<sup style="color:#6fbf73;">1,2,4,†</sup>,</span>
+              <span class="author-block">Nesreen K. Ahmed<sup style="color:#6fbf73;">○</sup>,</span>
+              <span class="author-block">Ali Payani<sup style="color:#6fbf73;">○</sup>,</span>
+              <span class="author-block">Huan Sun<sup style="color:#6fbf73;">1,†</sup></span>
+            </div>
+
+            <br />
+
+            <div class="is-size-6 publication-affiliations">
+              <span class="author-block"><sup style="color:#6fbf73;">1</sup> Department of Computer Science and Engineering</span>
+              <span class="author-block"><sup style="color:#6fbf73;">2</sup> College of Pharmacy</span>
+              <span class="author-block"><sup style="color:#6fbf73;">3</sup> Department of Psychology</span>
+              <span class="author-block"><sup style="color:#6fbf73;">4</sup> Department of Biomedical Informatics</span>
+              <span class="author-block"><sup style="color:#6fbf73;">5</sup> Department of Geography</span>
+              <span class="author-block"><sup style="color:#6fbf73;">6</sup> Department of Chemistry</span>
+              <br>
+              <span class="author-block">◦ Cisco Research</span>
+              <span class="author-block">⋄ University of Wisconsin–Madison</span>
+              <br>
+              <span class="author-block">† The Ohio State University</span>
+              <br>
+              <span class="author-block">
+                * Correspondence to 
+                <a href="mailto:li.14042@osu.edu">li.14042@osu.edu</a>, 
+                <a href="mailto:moussa.45@osu.edu">moussa.45@osu.edu</a>, 
+                <a href="mailto:sun.397@osu.edu">sun.397@osu.edu</a>
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2410.05080" class="external-link button is-normal is-rounded is-dark">
+                    <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/osunlp/ScienceAgentBench"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <!-- <i class="far fa-images"></i> -->
+                    <p style="font-size:18px">🤗</p>
+                    <!-- 🔗 -->
+                  </span>
+                  <span>Benchmark</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/OSU-NLP-Group/AutoSDT"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+                <!-- Dataset Link. -->
+                
+                <!-- Visualization Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://mathvista.github.io/#visualization"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <p style="font-size:18px">🔮</p>
+                    </span>
+                    <span>Visualize</span>
+                  </a>
+                </span> -->
+                <!-- Leaderboard Link. -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <!-- <div class="column is-full-width has-text-centered"> -->
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+            <strong>
+              Despite long-standing efforts in accelerating scientific discovery with AI, building reliable AI co-scientists remains challenging due to the lack of high-quality data for training and evaluation. To address this data scarcity problem, we introduce <em>AutoSDT</em>—an automatic pipeline that collects high-quality coding tasks from real-world data-driven discovery workflows.
+              <br><br>
+                AutoSDT leverages the coding capabilities and parametric knowledge of large language models (LLMs) to search from diverse sources, identify ecologically valid scientific tasks, and synthesize both task instructions and code solutions automatically. Using this pipeline, we construct <strong>AutoSDT-5K</strong>, a dataset of <strong>5,404</strong> scientific coding tasks spanning <strong>four scientific disciplines</strong> and using <strong>756 unique Python packages</strong>.
+              <ul>
+                <li>
+                  AutoSDT-5K is the largest and the only automatically collected open dataset for data-driven scientific discovery. 
+                </li>
+                <li>
+                  Models trained on AutoSDT-5K, named <strong>AutoSDT-Coder</strong>, 
+                </li>
+                <li>
+                  AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, doubling the performance of its base model.
+                </li>
+                <li>It also improves hypothesis matching score by 17.4% on DiscoveryBench, significantly narrowing the gap between open-weight models and proprietary ones.</li>
+              </ul>
+            </strong>
+            </p>
+
+            <br />
+            
+            <img src="AutoSDT-figures/Fig2-AutoSDT.png" alt="AutoSDT Pipeline" width="100%" />
+            <p> Pipeline of AutoSDT.
+              <!-- <img src="static/images/icon.png" style="width:1.0em;vertical-align: middle" alt="Logo" /> -->
+              The AutoSDT pipeline consists of three main stages to automatically construct data-driven scientific coding tasks. (1) AutoSDT-Search crawls GitHub and Papers with Code using seed keywords and filters repositories relevant to scientific research. (2) AutoSDT-Select identifies Python files containing data-driven scientific code and extracts their dependency folders. (3) AutoSDT-Adapt adapts these programs for standalone execution and generates natural language instructions to form finalized tasks. 
+              Right: The resulting AutoSDT-5K dataset includes 5,404 ecologically valid scientific tasks, each paired with a task instruction and runnable code solution.
+            </p>
+
+            
+            <section class="dataset-analysis">
+              <h2 class="title is-3 has-text-centered">Dataset Composition Analysis</h2>
+              <div class="columns">
+                <div class="column">
+                  <img src= " AutoSDT-figures/Fig3a.png" >
+                  <p><strong>Subtask Distribution:</strong> AutoSDT-5K covers diverse workflow components from data preprocessing to advanced analytics.</p>
+                </div>
+                <div class="column">
+                  <img src="AutoSDT-figures/Fig3b.png" />
+                  <p><strong>Package Ecosystem:</strong> 756 unique packages including domain-specific tools like rdkit, geopandas, and scanpy.</p>
+                </div>
+              </div>
+
+              <div class="content has-text-centered" style="margin-top: 2rem;">
+                <img src="AutoSDT-figures/table1.png" alt="Table 1: Dataset Summary" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
+                <p><strong>Table 1:</strong> AutoSDT-5K summary statistics across four scientific domains, including task counts, average lines of code, and unique packages.</p>
+              </div>
+
+            </section>
+
+      <br />
+
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-3 has-text-centered">Model Performance on ScienceAgentBench</h2>
+      
+          <!-- Figure 1: Bar chart -->
+          <div class="content has-text-centered" style="margin-bottom: 2rem;">
+            <img src="AutoSDT-figures/figure1.png" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
+            <p><strong>Figure 1:</strong> AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench and significantly improves verification accuracy compared to other open-weight and proprietary models.</p>
+          </div>
+      
+          
+      </section>
+
+      <h2 class="title is-3 has-text-centered">Task Examples from AutoSDT</h2>
+      <strong>
+      <p>
+        AutoSDT automatically collects high-quality coding tasks from real-world data-driven scientific discovery workflows. Each task is synthesized by a large language model and includes natural language instructions, dataset specifications, and a runnable Python solution. The goal is to benchmark language agents on realistic, ecologically valid scientific tasks that require data analysis, modeling, and visualization.
+        <ol>
+          <li>
+            Task Instruction, which describes the goal of an essential task in data-driven discovery and its output requirements.
+          </li>
+          <li>
+            Dataset Information, which contains the dataset's directory structure and a preview of its content.
+          </li>
+          <li>
+            Expert-Provided Knowledge, which includes explanations for scientific terms, formulas to conduct analysis, and example usages of programming tools.
+          </li>
+          <li>
+            Annotated Program, which is adapted from an open-source code repository released by a peer-reviewed scientific publication
+          </li>
+        </ol>
+      </p>
+    </strong>
+      <!-- 结果轮播 -->
+      <div id="results-carousel" class="carousel results-carousel"></div>
+
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>Example tasks in ScienceAgentBench.</p>
+        </div>
+      </div>
+
+      <br />
+
+      <section class="section">
+        <div class="container">
+          <h2 class="title is-3 has-text-centered">Evaluation</h2>
+      
+          <div class="content">
+            <p>
+              We comprehensively evaluate <strong>AutoSDT</strong> from both automatic and human perspectives:
+            </p>
+            <ul>
+              <li>
+                <strong>Automatic Evaluation:</strong> We use <em>success rate (SR)</em>, <em>verification rate (VER)</em>, and <em>hypothesis matching score (HMS)</em>, along with code-level similarity metrics including <em>Exact Match (EM)</em> and <em>CodeBLEU</em>, to assess whether the synthesized Python programs solve the assigned scientific tasks accurately and reliably.
+              </li>
+              <li>
+                <strong>Human Evaluation:</strong> We sample 256 tasks and invite domain experts to judge the quality of instructions and solutions. Results show that <strong>93%</strong> of tasks are ecologically valid, and <strong>92.2%</strong> of programs are functionally correct.
+              </li>
+              <li>
+                <strong>Downstream Performance:</strong> Models trained on AutoSDT-5K, dubbed <em>AutoSDT-Coder</em>, achieve strong performance on two challenging discovery benchmarks.
+              </li>
+            </ul>
+          </div>
+      
+          <!-- Table 2: Human Evaluation -->
+          <div class="columns is-centered" style="margin-bottom: 2rem;">
+            <div class="column is-half has-text-centered">
+              <img src="AutoSDT-figures/table2.png" alt="Table 2: Human evaluation of ecological validity and functional correctness" style="max-width: 100%; border: 1px solid #ccc;" />
+              <p><strong>Table 2:</strong> Human evaluation confirms 93% ecological validity and 92.2% functional correctness across 256 sampled tasks.</p>
+            </div>
+          </div>
+      
+          <!-- Table 3: Fine-tuning Comparison -->
+          <div class="columns is-centered">
+            <div class="column is-half has-text-centered">
+              <img src="AutoSDT-figures/table3.png" alt="Table 3: Model performance before and after fine-tuning on AutoSDT-5K" style="max-width: 100%; border: 1px solid #ccc;" />
+              <p><strong>Table 3:</strong> Fine-tuning on AutoSDT-5K significantly improves the performance of Qwen2.5-based open-weight models on scientific discovery tasks.</p>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
+      <br />
+
+      <h2 class="title is-3 has-text-centered">Comparison with Existing Benchmarks</h2>
+      <div class="container">
+          <p>
+            AutoSDT introduces a new paradigm for benchmark construction by leveraging large language models (LLMs) to automatically mine and adapt real-world scientific code. Compared to existing benchmarks, it offers distinct advantages across multiple dimensions:
+          </p>
+          <ul>
+            <li>
+              <strong>Construction Method:</strong> Existing benchmarks like <em>ScienceAgentBench</em> and <em>DiscoveryBench</em> rely on manual task design. In contrast, <strong>AutoSDT</strong> is constructed automatically via LLM-driven code mining and adaptation.
+            </li>
+            <li>
+              <strong>Scale and Domain Diversity:</strong> AutoSDT-5K includes <strong>5,404</strong> tasks across four scientific domains and <strong>756</strong> unique Python packages, making it the largest ecologically valid dataset of its kind.
+            </li>
+            <li>
+              <strong>Ecological Validity:</strong> Tasks in AutoSDT are derived from real-world codebases used in scientific publications, ensuring high authenticity. Human evaluation confirms <strong>93%</strong> of tasks are ecologically valid.
+            </li>
+            <li>
+              <strong>Downstream Model Performance:</strong> Fine-tuning on AutoSDT enables open-weight models like AutoSDT-Coder-32B to match the performance of proprietary models such as GPT-4o on ScienceAgentBench and significantly boost hypothesis matching on DiscoveryBench.
+            </li>
+          </ul>
+        </div>
+      
+        <!-- Table 4: Model performance -->
+        <div class="content has-text-centered" style="margin-top: 2rem;">
+          <img src="AutoSDT-figures/table4.png" alt="Table 4: AutoSDT-Coder vs other models on existing benchmarks" style="max-width: 100%; border: 1px solid #ccc;" />
+          <p><strong>Table 4:</strong> Comparison of model performance on ScienceAgentBench and DiscoveryBench. AutoSDT-Coder-32B achieves the highest performance among open-weight models and narrows the gap with proprietary models.</p>
+        </div>
+      </div>
+
+      <br />
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title is-3 has-text-centered">Disclaimer</h2>
+          <p>
+            AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper.
+            If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
+          </p>
+        </div>
+      </section>
+
+
+  <!-- @PAN TODO: bibtex -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">Citation</h2>
+      <pre><code>@misc{chen2024scienceagentbenchrigorousassessmentlanguage,
+  title={ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery}, 
+  author={Yifei Li and Hanane Nour Moussa and Ziru Chen and Shijie Chen and Botao Yu and Mingyi Xue and Benjamin Burns and Tzu-Yao Chiu and Vishal Dey and Zitong Lu and Chen Wei and Qianheng Zhang and Tianyu Zhang and Song Gao and Xuhui Huang and Xia Ning and Nesreen K. Ahmed and Ali Payani and Huan Sun},
+  year={2025},
+  eprint={2410.05080},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2410.05080}, 
+  }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://osu-nlp-group.github.io/TravelPlanner/">TravelPlanner</a>, <a href="https://osu-nlp-group.github.io/Mind2Web/">Mind2Web</a>, <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://mathvista.github.io/">MathVista</a>, licensed under a <a
+              rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </footer>
+
+  <script>
+    /* ① 公用函数：把内容包成和你原来相同的滚动 text-box */
+    function buildTextBox(title, content, isCode=false){
+      const codeWrapper = isCode                     // 若需要 <pre><code>
+        ? `<pre><code>${content}</code></pre>`
+        : `<p>${content}</p>`;
+      return `
+        <div class="text-box" style="overflow-x:scroll; overflow-y:scroll;">
+          <strong>${title}</strong>
+          ${codeWrapper}
+        </div>`;
+    }
+    
+    /* ② 读取 JSON 并生成 DOM */
+    fetch('show_cases.json')
+      .then(r => r.json())
+      .then(items => {
+        const carousel = document.getElementById('results-carousel');
+    
+        items.forEach((item, idx) => {
+          const box = document.createElement('div');
+          box.className = 'box m-5';
+          box.innerHTML = `
+            <div class="content has-text-centered">
+              <div class="sab_example">
+                ${buildTextBox('Instruction', item.instruction)}
+                ${buildTextBox('Input', item.input)}
+                ${buildTextBox('Output', item.output.replace(/```python|```/g,''), true)}
+                ${buildTextBox('Discipline', item.discipline)}
+                ${buildTextBox('File URL', `<a href="${item.file_url}" target="_blank">${item.file_url}</a>`)}
+              </div>
+            </div>`;
+          carousel.appendChild(box);
+        });
+    
+        /* ③ 重新初始化轮播（原来页面已有 options 变量） */
+        bulmaCarousel.attach('#results-carousel', options);
+      })
+      .catch(err => console.error('Load JSON failed: ', err));
+    </script>
+
+</body>
+
+</html>
