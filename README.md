@@ -2,7 +2,70 @@
 This is the official codebase of AutoSDT:
 Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 
-## AutoSDT-Pipeline
+<p align="center">
+[<a href="https://osu-nlp-group.github.io/AutoSDT/">Website</a>] •
+[<a href="">Paper</a>] •
+[<a href="https://huggingface.co/datasets/osunlp/AutoSDT-5K">Benchmark</a>] •
+[<a href="">Twitter</a>]
+</p>
+
+<br>
+<div align="center">
+  <img src="AutoSDT_github.png" width="80%" title="Introduction Figure">
+</div>
+
+## Highlights
+
+Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performance as GPT-4o (2024-05-13):
+<div align="left">
+  <img src="AutoSDT-Fig1.png" width="80%" title="Figure1">
+</div>
+
+We list the results of our small MAmmoTH-7B-Mistral as follows:
+
+| **Models**                          | **SR (%, ↑)**     | **VER (%, ↑)**    |
+|------------------------------------|-------------------|-------------------|
+| *Proprietary Reasoning Models*     |                   |                   |
+| Claude-3.7-Sonnet                  | 18.6 (±0.8)       | 51.6 (±4.7)       |
+| OpenAI o1-preview                  | **23.9 (±0.5)**   | **56.2 (±1.7)**   |
+| *Proprietary Non-Reasoning Models*|                   |                   |
+| GPT-4o (2024-05-13)                | 7.5 (±0.5)        | 42.2 (±1.6)       |
+| GPT-4o (2024-11-20)                | 11.4 (±1.2)       | 43.1 (±2.1)       |
+| Claude-3.5-Sonnet-v1               | 11.8 (±2.1)       | 36.0 (±1.2)       |
+| *Open-Weight Models*               |                   |                   |
+| Llama-3.1-Instruct-70B             | 3.6 (±2.0)        | 22.2 (±0.9)       |
+| Llama-3.1-Instruct-405B            | 3.6 (±0.5)        | 32.0 (±0.5)       |
+| Qwen2.5-Coder-Instruct-32B         | 3.9 (±0.8)        | 28.4 (±0.8)       |
+| *Fine-tuned Open-Weight Models (Ours)* |               |                   |
+| AutoSDT-Coder-7B                   | 2.3 (±1.2)        | 27.5 (±3.3)       |
+| AutoSDT-Coder-14B                  | 5.9 (±1.6)        | 35.0 (±2.5)       |
+| AutoSDT-Coder-32B                  | 7.8 (±1.4)        | 36.0 (±5.2)       |
+
+## Table-of-Contents
+- [📌 Introduction](#introduction)
+- [⚙️ Installation](#installation)
+- [🚀 AutoSDT-Pipeline] (#AutoSDT-Pipeline)
+- [🛠️ Training and Inference](#training-and-inference)
+- [📜 License](#license)
+- [📖 Citation](#citation)
+
+## Introduction
+Despite long-standing efforts in accelerating scientific discovery with AI, building reliable AI co-scientists remains challenging due to the lack of high-quality data for training and evaluation. To address this data scarcity problem, we introduce AutoSDT—an automatic pipeline that collects high-quality coding tasks from real-world data-driven discovery workflows.
+
+AutoSDT leverages the coding capabilities and parametric knowledge of large language models (LLMs) to search from diverse sources, identify ecologically valid scientific tasks, and synthesize both task instructions and code solutions automatically. Using this pipeline, we construct AutoSDT-5K, a dataset of 5,404 scientific coding tasks spanning four scientific disciplines and using 756 unique Python packages.
+- AutoSDT-5K is the largest and the only automatically collected open dataset for data-driven scientific discovery.
+- Models trained on AutoSDT-5K, named AutoSDT-Coder, AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, doubling the performance of its base model.
+- It also improves hypothesis matching score by 17.4% on DiscoveryBench, significantly narrowing the gap between open-weight models and proprietary ones.
+
+## Installation
+Clone this repository and install the required packages:
+```python
+git clone https://github.com/OSU-NLP-Group/AutoSDT
+cd AutoSDT
+pip install -r requirements.txt
+```
+
+## **AutoSDT Pipeline**
 ### Configure Azure endpoint and API key
 ```python
 vim ~/.bashrc
