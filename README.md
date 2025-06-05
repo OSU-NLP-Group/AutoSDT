@@ -113,3 +113,47 @@ to generate all the evaluation results, and run
 python cal_eval_avg.py
 ```
 to compute the final results.
+
+## License
+
+We ensure that all 1325 repositories composing the final tasks in AutoSDT-5K allow for non-proprietary use. We list the licenses and the number of corresponding repositories in the following table:
+
+| License        | # of Repositories |
+|----------------|-------------------|
+| MIT            | 507               |
+| GNU            | 247               |
+| Apache         | 145               |
+| BSD            | 84                |
+| Boost          | 4                 |
+| Public Domain  | 3                 |
+| ISC            | 1                 |
+| Eclipse        | 1                 |
+| Other (Custom) | 16                |
+
+We manually checked the remaining 16 repositories with custom licenses and ensured that they all allow academic and non-commercial use:
+
+| Repository                              |
+|------------------------------------------|
+| GabrieleLozupone/AXIAL                  |
+| fhalab/MLDE                              |
+| snacktavish/TreeToReads                  |
+| ninglab/G2Retro                          |
+| usnistgov/SDNist                         |
+| CSi-Studio/3D-MSNet                      |
+| SNU-LIST/QSMnet                          |
+| pygbe/pygbe                              |
+| Ramprasad-Group/polygnn                  |
+| gdalessi/OpenMORe                        |
+| svalkiers/clusTCR                        |
+| AI-sandbox/SALAI-Net                     |
+| pixelite1201/agora_evaluation           |
+| jsunn-y/PolymerGasMembraneML            |
+| spectrochempy/spectrochempy              |
+| usnistgov/atomgpt                        |
+
+There are also 317 repositories without any license information. We assume that these repositories are permissive for academic purposes.
+
+
+## Citation
+
+Please cite our paper if you use our data, model, or code.
