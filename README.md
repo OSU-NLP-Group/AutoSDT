@@ -27,6 +27,7 @@ Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performan
 - [🚀 AutoSDT-Pipeline](#AutoSDT-Pipeline)
 - [🛠️ Training and Inference](#training-and-inference)
 - [📜 License](#license)
+- [📄 Disclaimer](#disclaimer)
 - [📖 Citation](#citation)
 
 ## Introduction
@@ -154,7 +155,8 @@ We manually checked the remaining 16 repositories with custom licenses and ensur
 
 There are also 317 repositories without any license information. We assume that these repositories are permissive for academic purposes.
 
+## Disclaimer
+AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper. If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
 
 ## Citation
-
 Please cite our paper if you use our data, model, or code.
