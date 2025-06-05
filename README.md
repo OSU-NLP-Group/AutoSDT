@@ -91,7 +91,8 @@ python convert_data_to_alpaca_format.py
 ```
 to convert the data format into alpaca training format.
 
-## Supervised Fine-tuning
+## Training and Inference
+### Supervised Fine-tuning
 We use the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) library to conduct SFT experiments. We provide the `.yaml` files within this repo:
 
 ```python
@@ -101,7 +102,7 @@ We use the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) library to 
 ```
 Please refer to [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for more details.
 
-## Inference and Evaluation
+### Inference and Evaluation
 For ScienceAgentBench, we directly follow the original repo for running inference and evaluation. Please refer to `ScienceAgentBench/README.md` for more information.
 
 For DiscoveryBench, first start an LLM engine at localhost using [vllm](https://docs.vllm.ai/en/latest/), then run
