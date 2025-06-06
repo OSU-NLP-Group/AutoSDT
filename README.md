@@ -5,7 +5,7 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 <p align="center">
 [<a href="https://osu-nlp-group.github.io/AutoSDT/">Website</a>] •
 [<a href="">Paper</a>] •
-[<a href="https://huggingface.co/datasets/osunlp/AutoSDT-5K">Benchmark</a>] •
+[<a href="https://huggingface.co/datasets/osunlp/AutoSDT-5K">Dataset</a>] •
 [<a href="">Twitter</a>]
 </p>
 
