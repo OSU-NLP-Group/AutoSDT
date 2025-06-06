@@ -14,13 +14,6 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
   <img src="AutoSDT_github.png" width="80%" title="Introduction Figure">
 </div>
 
-## Highlights
-
-Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performance as GPT-4o (2024-05-13):
-<div align="left">
-  <img src="AutoSDT-Fig1.png" width="60%" title="Figure1">
-</div>
-
 ## Table-of-Contents
 - [📌 Introduction](#introduction)
 - [⚙️ Installation](#installation)
@@ -38,6 +31,13 @@ AutoSDT leverages the coding capabilities and parametric knowledge of large lang
 - To the best of our knowledge, AutoSDT-5K is the largest and the only automatically collected open dataset for data-driven scientific discovery so far.
 - After fine-tuning Qwen2.5-Coder-32B-Instruct on AutoSDT-5K, the model reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, **doubling** the performance of its base model.
 - It also improves the hypothesis matching score by 17.4% relatively on DiscoveryBench, significantly narrowing the gap between open-weight models and proprietary ones.
+
+### Highlights
+
+Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performance as GPT-4o (2024-05-13):
+<div align="left">
+  <img src="AutoSDT-Fig1.png" width="60%" title="Figure1">
+</div>
 
 ## Installation
 Clone this repository and install the required packages:
