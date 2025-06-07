@@ -158,14 +158,64 @@ body {
 
 .sab_example{
   display: grid;
-  grid-template-columns: 35% 55%;
-  grid-template-rows: 200px 500px;
-  grid-column-gap: 5%;
-  grid-row-gap: 5%;
+  grid-template-columns: 100%;
+  grid-template-rows: 80px 500px 500px;
+  grid-row-gap: 20px;
   margin: 5%;
   grid-template-areas:
-    "box1 box3"
-    "box2 box4";
+    "discipline"
+    "instruction-input"
+    "output";
+}
+
+.discipline-box {
+  grid-area: discipline;
+  width: 100%;
+}
+
+.instruction-input-container {
+  grid-area: instruction-input;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-column-gap: 4%;
+  width: 100%;
+  height: 100%;
+}
+
+.output-box {
+  grid-area: output;
+  width: 100%;
+}
+
+/* 确保 text-box 有固定高度和滚动条 */
+.text-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.discipline-box .text-box {
+  height: 70px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.instruction-input-container .text-box {
+  height: 480px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.output-box .text-box {
+  height: 480px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+/* 确保轮播项目占满宽度 */
+.results-carousel .item {
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {

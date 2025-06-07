@@ -8,6 +8,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> AutoSDT: Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists</title>
 
+  <style>
+      pre {
+          max-height: 400px; 
+          overflow-x: auto; 
+          overflow-y: auto;
+          background-color: #f0f0f0; 
+          padding: 10px;
+          border: 1px solid #ccc; 
+          text-align: left;
+      }
+      
+      /* 添加这些样式 */
+      .text-box {
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 4px;
+          background-color: #f9f9f9;
+          height: 100%;
+          overflow-x: auto;
+          overflow-y: auto;
+      }
+      
+      .discipline-box .text-box {
+          max-height: 70px;
+      }
+      
+      .instruction-input-container .text-box {
+          max-height: 480px;
+      }
+      
+      .output-box .text-box {
+          max-height: 480px;
+      }
+      
+      /* 确保 pre 在 text-box 内也有合适的样式 */
+      .text-box pre {
+          margin: 0;
+          max-height: none;
+      }
+  </style>
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
   <!-- <script>
@@ -325,12 +366,14 @@
 
       <section class="section">
         <div class="container">
-          <h2 class="title is-3 has-text-centered">Model Performance on ScienceAgentBench</h2>
+          <h2 class="title is-3 has-text-centered">Model Performance on AutoSDT</h2>
       
           <!-- Figure 1: Bar chart -->
-          <div class="content has-text-centered" style="margin-bottom: 2rem;">
-            <img src="AutoSDT-figures/figure1.png" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
-            <p><strong>Figure 1:</strong> AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench and significantly improves verification accuracy compared to other open-weight and proprietary models.</p>
+          <div class="columns is-centered">
+            <div class="column is-two-thirds has-text-centered">
+              <img src="AutoSDT-figures/figure1.png" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
+              <p><strong>Figure 1:</strong> AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench and significantly improves verification accuracy compared to other open-weight and proprietary models.</p>
+            </div>
           </div>
       
           
@@ -357,11 +400,12 @@
       </p>
     </strong>
       <!-- 结果轮播 -->
-      <div id="results-carousel" class="carousel results-carousel"></div>
+      <div class="carousel results-carousel" id="results-carousel">
+      </div>
 
       <div class="container">
         <div class="content has-text-centered">
-          <p>Example tasks in ScienceAgentBench.</p>
+          <p>Example tasks in AutoSDT.</p>
         </div>
       </div>
 
@@ -398,7 +442,7 @@
       
           <!-- Table 3: Fine-tuning Comparison -->
           <div class="columns is-centered">
-            <div class="column is-half has-text-centered">
+            <div class="column is-three-quarters has-text-centered">
               <img src="AutoSDT-figures/table3.png" alt="Table 3: Model performance before and after fine-tuning on AutoSDT-5K" style="max-width: 100%; border: 1px solid #ccc;" />
               <p><strong>Table 3:</strong> Fine-tuning on AutoSDT-5K significantly improves the performance of Qwen2.5-based open-weight models on scientific discovery tasks.</p>
             </div>
@@ -431,11 +475,12 @@
         </div>
       
         <!-- Table 4: Model performance -->
-        <div class="content has-text-centered" style="margin-top: 2rem;">
-          <img src="AutoSDT-figures/table4.png" alt="Table 4: AutoSDT-Coder vs other models on existing benchmarks" style="max-width: 100%; border: 1px solid #ccc;" />
-          <p><strong>Table 4:</strong> Comparison of model performance on ScienceAgentBench and DiscoveryBench. AutoSDT-Coder-32B achieves the highest performance among open-weight models and narrows the gap with proprietary models.</p>
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <img src="AutoSDT-figures/table4.png" alt="Table 4: AutoSDT-Coder vs other models on existing benchmarks" style="max-width: 100%; border: 1px solid #ccc;" />
+            <p><strong>Table 4:</strong> Comparison of model performance on ScienceAgentBench and DiscoveryBench. AutoSDT-Coder-32B achieves the highest performance among open-weight models and narrows the gap with proprietary models.</p>
+          </div>
         </div>
-      </div>
 
       <br />
       <section class="section" id="BibTeX">
@@ -487,11 +532,11 @@
   <script>
     /* ① 公用函数：把内容包成和你原来相同的滚动 text-box */
     function buildTextBox(title, content, isCode=false){
-      const codeWrapper = isCode                     // 若需要 <pre><code>
+      const codeWrapper = isCode
         ? `<pre><code>${content}</code></pre>`
         : `<p>${content}</p>`;
       return `
-        <div class="text-box" style="overflow-x:scroll; overflow-y:scroll;">
+        <div class="text-box">
           <strong>${title}</strong>
           ${codeWrapper}
         </div>`;
@@ -502,28 +547,54 @@
       .then(r => r.json())
       .then(items => {
         const carousel = document.getElementById('results-carousel');
-    
+        carousel.innerHTML = '';
+
         items.forEach((item, idx) => {
+          // 创建 item 容器（这是 Bulma Carousel 需要的）
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'item';
+          
           const box = document.createElement('div');
           box.className = 'box m-5';
           box.innerHTML = `
             <div class="content has-text-centered">
               <div class="sab_example">
-                ${buildTextBox('Instruction', item.instruction)}
-                ${buildTextBox('Input', item.input)}
-                ${buildTextBox('Output', item.output.replace(/```python|```/g,''), true)}
-                ${buildTextBox('Discipline', item.discipline)}
-                ${buildTextBox('File URL', `<a href="${item.file_url}" target="_blank">${item.file_url}</a>`)}
+                <!-- 第一行：Discipline 和 File URL -->
+                <div class="discipline-box" style="display: grid; grid-template-columns: 48% 48%; grid-column-gap: 4%;">
+                  ${buildTextBox('Discipline', item.discipline)}
+                  ${buildTextBox('File URL', `<a href="${item.file_url}" target="_blank">${item.file_url}</a>`)}
+                </div>
+                
+                <!-- 第二行：Instruction 和 Input -->
+                <div class="instruction-input-container">
+                  ${buildTextBox('Instruction', item.instruction)}
+                  ${buildTextBox('Input', item.input)}
+                </div>
+                
+                <!-- 第三行：Output -->
+                <div class="output-box">
+                  ${buildTextBox('Output', item.output.replace(/```python|```/g,''), true)}
+                </div>
               </div>
             </div>`;
-          carousel.appendChild(box);
+          
+          itemDiv.appendChild(box);
+          carousel.appendChild(itemDiv);
         });
     
-        /* ③ 重新初始化轮播（原来页面已有 options 变量） */
-        bulmaCarousel.attach('#results-carousel', options);
+        /* ③ 重新初始化轮播 */
+        const carousels = bulmaCarousel.attach('.carousel', {
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          loop: true,
+          infinite: true,
+          autoplay: false,
+          pagination: true,
+          navigationKeys: true
+        });
       })
       .catch(err => console.error('Load JSON failed: ', err));
-    </script>
+</script>
 
 </body>
 
