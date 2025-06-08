@@ -1,4 +1,4 @@
-python ../src/gen_inst.py \
+python ../src/autosdt_adapt_generate_instruction.py \
 --input_file ../result/coding_agent_result.jsonl \
 --output_file ../../final_combined_training_data.jsonl \
 --api_version 2024-12-01-preview \
