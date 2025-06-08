@@ -57,34 +57,24 @@ export AZURE_API_VERSION=YOUR_AZURE_API_VERSION
 source ~/.bashrc
 ```
 
-### AutoSDT-Crawl: Download repos to local dir and extract py files
+### AutoSDT-Search: Search for research related repositories
 ```python
-cd CodingAgent/scripts
-bash run_crawl_scientific_py_files.sh
+cd autosdt/scripts
+bash run_search.sh
 ```
 
-### AutoSDT-Select-Step1: Model-based scientific task verification
+### AutoSDT-Select: Crawl python files, verify that they represent data-driven scientific tasks, and prepare their workspaces
 ```python
+bash run_crawl_files.sh
 bash run_scientific_task_verify.sh
+bash run_locate_dependencies.sh
+bash run_prepare_env.sh
 ```
 
-### AutoSDT-Select-Step2: Model-based dataset locating
+### AutoSDT-Adapt: Adapt program for standalone executability and generate task instruction
 ```python
-bash run_locate_dataset.sh
-```
-
-### AutoSDT-Select-Step3: Move the datasets to the right place
-```python
-bash run_prepare_dataset_env.sh
-```
-
-### AutoSDT-Adapt
-```python
-cd ../..
-bash CodingAgent/scripts/clone_envs.sh
-bash run_coding_agent.sh
-cd CodingAgent/scripts
-bash run_gen_inst.sh
+bash run_adapt_code.sh
+bash run_generate_instruction.sh
 ```
 
 After the above steps, you should obtain a `final_combined_training_data.jsonl` containing the generated instructions and code. After that, run
