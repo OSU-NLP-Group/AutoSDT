@@ -37,6 +37,16 @@
       .instruction-input-container .text-box {
           max-height: 480px;
       }
+
+      .instruction-input-container .text-box strong {
+        display: block;
+        text-align: center;
+        margin-bottom: 8px; /* 可选：增加标题和正文的间距 */
+      }
+
+      .instruction-input-container .text-box p {
+        text-align: left;
+      }
       
       .output-box .text-box {
           max-height: 480px;
@@ -234,7 +244,7 @@
               <span class="author-block">† The Ohio State University</span>
               <br>
               <span class="author-block">
-                * Correspondence to 
+                * Correspondance to 
                 <a href="mailto:li.14042@osu.edu">li.14042@osu.edu</a>, 
                 <a href="mailto:moussa.45@osu.edu">moussa.45@osu.edu</a>, 
                 <a href="mailto:sun.397@osu.edu">sun.397@osu.edu</a>
@@ -246,8 +256,6 @@
                 <!-- PDF Link. -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/2410.05080" class="external-link button is-normal is-rounded is-dark">
-                    <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
-                   class="external-link button is-normal is-rounded is-dark"> -->
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -265,14 +273,14 @@
                 </a>
               </span> -->
               <span class="link-block">
-                <a href="https://huggingface.co/datasets/osunlp/ScienceAgentBench"
+                <a href="https://huggingface.co/datasets/osunlp/AutoSDT-5K"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <!-- <i class="far fa-images"></i> -->
                     <p style="font-size:18px">🤗</p>
                     <!-- 🔗 -->
                   </span>
-                  <span>Benchmark</span>
+                  <span>Dataset</span>
                 </a>
               </span>
               <span class="link-block">
@@ -305,193 +313,177 @@
     </div>
   </section>
 
+  <!-- Section: Main Body -->
   <section class="section">
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <!-- <div class="column is-full-width has-text-centered"> -->
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Overview</h2>
+          
+          <!-- Overview -->
+          <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <p>
-            <strong>
-              Despite long-standing efforts in accelerating scientific discovery with AI, building reliable AI co-scientists remains challenging due to the lack of high-quality data for training and evaluation. To address this data scarcity problem, we introduce <em>AutoSDT</em>—an automatic pipeline that collects high-quality coding tasks from real-world data-driven discovery workflows.
-              <br><br>
-                AutoSDT leverages the coding capabilities and parametric knowledge of large language models (LLMs) to search from diverse sources, identify ecologically valid scientific tasks, and synthesize both task instructions and code solutions automatically. Using this pipeline, we construct <strong>AutoSDT-5K</strong>, a dataset of <strong>5,404</strong> scientific coding tasks spanning <strong>four scientific disciplines</strong> and using <strong>756 unique Python packages</strong>.
+            <p>Despite long-standing efforts in accelerating scientific discovery with AI, building AI co-scientists remains challenging due to limited high-quality data for training and evaluation. To tackle this data scarcity issue, we present AutoSDT, an automatic pipeline that collects high-quality coding tasks in real-world data-driven discovery workflows. AutoSDT leverages the coding capabilities and parametric knowledge of LLMs to search for diverse sources, select ecologically valid tasks, and synthesize accurate task instructions and code solutions. Using our pipeline, we construct AutoSDT-5K, a dataset of 5,404 coding tasks for data-driven discovery that covers four scientific disciplines and 756 unique Python packages. To the best of our knowledge, AutoSDT-5K is the only automatically collected and the largest open dataset for data-driven scientific discovery. Expert feedback on a subset of 256 tasks shows the effectiveness of AutoSDT: 93% of the collected tasks are ecologically valid, and 92.2% of the synthesized programs are functionally correct. Trained on AutoSDT-5K, the Qwen2.5-Coder-Instruct LLM series, dubbed AutoSDT-Coder, show substantial improvement on two challenging data-driven discovery benchmarks, ScienceAgentBench and DiscoveryBench. Most notably, AutoSDT-Coder-32B reaches the same level of performance as GPT-4o on ScienceAgentBench with a success rate of 7.8%, doubling the performance of its base model. On DiscoveryBench, it lifts the hypothesis matching score to 8.1, bringing a 17.4% relative improvement and closing the gap between open-weight models and GPT-4o.</p>
+             <!-- Figure 1: Bar chart -->
+             <div>
+              <div style="text-align: center; width: 100%;">
+                <img src="AutoSDT-figures/AutoSDT-Fig1.svg" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 50%;"/>
+                <!-- <img src="AutoSDT-figures/AutoSDT-Fig1.svg" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" /> -->
+              </div>
+              <p>Figure 1: Performance of our <b>AutoSDT-Coder</b> in comparison to other open-weight and proprietary LLMs on ScienceAgentBench. Fine-tuned on <b>AutoSDT-5K</b> based with Qwen2.5-32B-Coder-Instruct, <b>AutoSDT-Coder-32B</b> achieves the same level of performance as GPT-4o (2024-05-13).</p>
+            </div>
+            <br><br><br><br>
+            
+            
+            <!-- AutoSDT Pipeline -->
+            <div style="text-align: center;">
+              <h2 class="title is-3">Pipeline Overview</h2>
+            </div>
+            <div class="has-text-justified">
+              <p> As shown in Figure 2, given a few high-level keywords, AutoSDT-Search first searches for related code repositories with keyword expansion. After that, AutoSDT-Select identifies source code files that correspond to data-driven discovery tasks with multi-step filtering strategy and extracts dependencies for their execution environments. Lastly, AutoSDT-Adapt modifies the selected source code files into independently executable programs and generates task instructions accordingly. </p>
+            </div>
+            <br>
+            <div style="text-align: center;">
+              <img src="AutoSDT-figures/Fig2-AutoSDT.svg" alt="AutoSDT Pipeline" width="85%" />
+            </div>
+            <p> Figure 2: Our <b>AutoSDT</b> pipeline collects data-driven discovery tasks in three steps: (1) <b>AutoSDT-Search</b> generates a list of keywords for each discipline and searches for relevant repositories. (2) <b>AutoSDT-Select</b> identifies programs that represent data-driven discovery tasks and extracts their execution dependency folders. (3) <b>AutoSDT-Adapt</b> modifies the selected programs to be independently executable and generates their corresponding task instructions. Our pipeline finally results in <b>AutoSDT-5K</b>, a dataset of 5,404 ecologically valid scientific tasks, each paired with a task instruction and runnable code solution.</p>
+            <br><br><br><br>
+          <!-- </div> -->
+
+            <!-- Our Dataset: AutoSDT-5K -->
+            <h2 class="title is-3 has-text-centered">Our Dataset: AutoSDT-5K</h2>
+            <div class="has-text-justified">
+              <p>We use AutoSDT to create AutoSDT-5K, a dataset of 5,404 data-driven discovery tasks, which costs only 0.55 USD per task on average. To our best knowledge, AutoSDT-5K is so far the largest coding dataset for data-driven discovery, covering 756 unique Python packages of computational tools in four disciplines: Bioinformatics, Computational Chemistry, Geographical Information Science, and Psychology and Cognitive Neuroscience.</p>
+            </div>
+            <br>
+            <div class="columns">
+              <div class="column">
+                <img src= "AutoSDT-figures/Fig3a.png" width="95%">
+                <p style="width:85%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
+              </div>
+              <div class="column">
+                <img src="AutoSDT-figures/Fig3b.png" width="95%"/>
+                <p style="width:85%; text-align: left;">Figure 3b: Examples of packages in
+                  AutoSDT-5K, including general-purpose toolkits and domain-specific packages for bioinformatics, computational chemistry, geographic information science, and psychology and cognitive neuroscience.</p>
+              </div>
+            </div>
+            <br>
+            <div class="has-text-justified">
+              <p>We engage 9 subject matter experts from these disciplines, including Ph.D. students and professors, to examine a subset of 256 tasks. The experts report that 93% of the tasks are scientifically authentic and represent parts of their data-driven discovery workflows, and 92.2% of the generated programs are deemed correct solutions to the tasks, validating the high quality of AutoSDT-5K.</p>
+            </div>
+            <br>
+            <div class="columns">
+              <div class="column">
+                <img src= "AutoSDT-figures/table1.png" width="75%">
+                <p style="width:85%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
+              </div>
+              <div class="column">
+                <img src="AutoSDT-figures/table2.png" width="95%"/>
+                <p style="width:85%; text-align: left;">Figure 3b: Examples of packages in
+                  AutoSDT-5K, including general-purpose toolkits and domain-specific packages for bioinformatics, computational chemistry, geographic information science, and psychology and cognitive neuroscience.</p>
+              </div>
+            </div>
+            <br><br><br><br>
+
+            <!-- Task Examples from AutoSDT -->
+          <!-- <div class="has-text-justified"> -->
+            <h2 class="title is-3 has-text-centered">Task Examples from AutoSDT-5K</h2>
+            <!-- Example tasks in AutoSDT-5K showing -->
+            <div class="carousel results-carousel" id="results-carousel">
+            </div>
+            <br>
+            <div class="container">
+              <div class="content has-text-centered">
+                <p>Example tasks in AutoSDT-5K.</p>
+              </div>
+            </div>
+          <!-- </div> -->
+          <br><br><br><br>
+
+            <!-- Overall Results -->
+            <div class="has-text-justified">
+              <h2 class="title is-3 has-text-centered">Overall Results</h2>
+              <!-- Table 3: Qwen2.5 Fine-tuning Comparison -->
+              <p>Overall, models trained on AutoSDT-5K achieve improved SR and VER on ScienceAgentBench. Specifically, we improve Qwen2.5-Coder-32B by 3.9% SR and 7.6% VER. Furthermore, we notice that the performance gains increase with model size; although the 7B model does not show SR improvements, the performance gains become more evident with the 14B and the 32B model. The performance drop for the 7B model is probably due to limited model capacity or learnability gap.</p>
               <ul>
                 <li>
-                  AutoSDT-5K is the largest and the only automatically collected open dataset for data-driven scientific discovery. 
+                  SR: Success Rate, a binary metric that examines whether a program output meets the human-annotated success criteria for each task goal.
                 </li>
                 <li>
-                  Models trained on AutoSDT-5K, named <strong>AutoSDT-Coder</strong>, 
+                  VER: Valid Execution Rate, a binary metric which checks if the program can execute without errors and save its output to the correct location.
                 </li>
                 <li>
-                  AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench with a success rate of 7.8%, doubling the performance of its base model.
+                  HMS: Hypothesis Matching Score, which breaks the generated hypotheses down into sub-hypotheses with an LLM and evaluates them against gold hypotheses.
                 </li>
-                <li>It also improves hypothesis matching score by 17.4% on DiscoveryBench, significantly narrowing the gap between open-weight models and proprietary ones.</li>
               </ul>
-            </strong>
-            </p>
-
-            <br />
-            
-            <img src="AutoSDT-figures/Fig2-AutoSDT.png" alt="AutoSDT Pipeline" width="100%" />
-            <p> Pipeline of AutoSDT.
-              <!-- <img src="static/images/icon.png" style="width:1.0em;vertical-align: middle" alt="Logo" /> -->
-              The AutoSDT pipeline consists of three main stages to automatically construct data-driven scientific coding tasks. (1) AutoSDT-Search crawls GitHub and Papers with Code using seed keywords and filters repositories relevant to scientific research. (2) AutoSDT-Select identifies Python files containing data-driven scientific code and extracts their dependency folders. (3) AutoSDT-Adapt adapts these programs for standalone execution and generates natural language instructions to form finalized tasks. 
-              Right: The resulting AutoSDT-5K dataset includes 5,404 ecologically valid scientific tasks, each paired with a task instruction and runnable code solution.
-            </p>
-
-            
-            <section class="dataset-analysis">
-              <h2 class="title is-3 has-text-centered">Dataset Composition Analysis</h2>
-              <div class="columns">
-                <div class="column">
-                  <img src= " AutoSDT-figures/Fig3a.png" >
-                  <p><strong>Subtask Distribution:</strong> AutoSDT-5K covers diverse workflow components from data preprocessing to advanced analytics.</p>
-                </div>
-                <div class="column">
-                  <img src="AutoSDT-figures/Fig3b.png" />
-                  <p><strong>Package Ecosystem:</strong> 756 unique packages including domain-specific tools like rdkit, geopandas, and scanpy.</p>
-                </div>
+              <br>
+              <div style="text-align: center;">
+                <img src="AutoSDT-figures/Table3.png" alt="Table 3: Model performance before and after fine-tuning on AutoSDT-5K" style="max-width: 98%; "/>
               </div>
+              <p style="width: 100%;">Table 3: Results of different-sized Qwen2.5-Coder-Instruct models on ScienceAgentBench and DiscoveryBench. All results are generated with zero-shot direct prompting.</p>
+              <br>
 
-              <div class="content has-text-centered" style="margin-top: 2rem;">
-                <img src="AutoSDT-figures/table1.png" alt="Table 1: Dataset Summary" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
-                <p><strong>Table 1:</strong> AutoSDT-5K summary statistics across four scientific domains, including task counts, average lines of code, and unique packages.</p>
+              <!-- Table 4: Different models Comparison -->
+              <p>Our models outperform open-weight models of significantly larger size; for example, AutoSDT-Coder-32B achieves more than double the performance of the Llama-3.1-Instruct-405B model. Moreover, AutoSDT-Coder-32B outperforms GPT-4o (2024-05-13) and rivals the performance of Claude-3.5-Sonnet-v1 and GPT-4o (2024-11-20). These results show the effectiveness of AutoSDT-5K in generating high-quality scientific data and its potential to train truly open-weight and open-data co-scientist agents. However, we also observe that there is still a large gap with reasoning models (models that incorporate a "thinking" or "chain-of-thought" process before generating the final answer) like OpenAI-o1 and Claude-3.7-Sonnet . We believe that boosting our data with high-quality reasoning trajectories could be a promising direction to explore and leave it as a future work.</p>
+              <br>
+              <div style="text-align: center;">
+                <img src="AutoSDT-figures/Table4.png" alt="Table 3: Model performance before and after fine-tuning on AutoSDT-5K" style="max-width: 48%; "/>
               </div>
+              <p style="width: 100%; text-align: center;">Table 4: Performance comparison among different models on ScienceAgentBench.</p>
+              <br>
+              
+            </div>
+            <br><br><br><br>
 
-            </section>
+            <!-- Scaling Experiments -->
+            <div class="has-text-justified">
+              <h2 class="title is-3 has-text-centered">Scaling Experiments</h2>
+              <!-- Figure: Scaling -->
+              <p>The 14B model exhibits noticeable gains up to 2.5k examples, after which further scaling does not yield improvement, suggesting the onset of performance saturation. In contrast, the 32B model continues to benefit from additional data, achieving higher success rates as the training set increases to 5k+. This analysis suggests that performance gains from scaling up training data become limited for smaller models, while larger models are able to better utilize increased data for further improvement. Such scaling behavior is consistent with <a href="">previous findings</a>, which report that the 14B model saturates at approximately 800 training trajectories for addressing software engineering issues, while the 32B still benefits from more training trajectories.</p>
+              <div style="text-align: center;">
+                <img src="AutoSDT-figures/scaling.svg" style="max-width: 65%; "/>
+              </div>
+              <p>Figure 4: Impact of training set size on ScienceAgentBench performance for AutoDCT-Coder-14B and AutoDCT-Coder-32B. Shaded areas indicate standard deviation across three runs.</p>
+            </div>
+            <br><br><br><br>
 
-      <br />
 
-      <section class="section">
-        <div class="container">
-          <h2 class="title is-3 has-text-centered">Model Performance on AutoSDT</h2>
-      
-          <!-- Figure 1: Bar chart -->
-          <div class="columns is-centered">
-            <div class="column is-two-thirds has-text-centered">
-              <img src="AutoSDT-figures/figure1.png" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" />
-              <p><strong>Figure 1:</strong> AutoSDT-Coder-32B reaches GPT-4o-level performance on ScienceAgentBench and significantly improves verification accuracy compared to other open-weight and proprietary models.</p>
+
+            <!-- Comparison with Existing Benchmarks -->
+            <h2 class="title is-3 has-text-centered">Comparison with Existing Benchmarks</h2>
+            <div class="has-text-justified">
+                <p> We compare AutoSDT-5K against existing science-oriented data analysis datasets in Table 5:</p>
+                <ul>
+                  <li>AutoSDT-5K covers a considerably larger set of tasks balanced across multiple disciplines.
+                  </li>
+                  <li>Unlike MLE-Bench and DSBench which derive code from competition platforms or RE-Bench and Bix-Bench which use human annotators to curate new coding tasks, AutoSDT-5K is based on naturally-occurring code authored by real-world scientists, ensuring the ecological validity of the tasks. 
+                  </li>
+                  <li>AutoSDT-5K is the only automatically generated dataset for coding tasks in scientific disciplines.
+                  </li>
+                </ul>
+                <p>While automatic generation approaches have been applied to software engineering datasets, this work is the first to address the challenging task of collecting high-quality data-driven scientific discovery programs at scale.</p>
+                
+                <br>
+                <div style="text-align: center;">
+                  <img src="AutoSDT-figures/existing_benchmarks.png" style="max-width: 90%; "/>
+                </div>
+                <p>Figure 5: Dataset statistics of AutoSDT-5K compared to related datasets. Columns show the number of instances, number of subject domains, and whether the dataset is oriented towards scientific disciplines, based on naturally-occurring code, and automatically collected.</p>
             </div>
           </div>
-      
-          
-      </section>
-
-      <h2 class="title is-3 has-text-centered">Task Examples from AutoSDT</h2>
-      <strong>
+        </div>
+      </div>
+    </div>
+  </section>    
+              
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">Disclaimer</h2>
       <p>
-        AutoSDT automatically collects high-quality coding tasks from real-world data-driven scientific discovery workflows. Each task is synthesized by a large language model and includes natural language instructions, dataset specifications, and a runnable Python solution. The goal is to benchmark language agents on realistic, ecologically valid scientific tasks that require data analysis, modeling, and visualization.
-        <ol>
-          <li>
-            Task Instruction, which describes the goal of an essential task in data-driven discovery and its output requirements.
-          </li>
-          <li>
-            Dataset Information, which contains the dataset's directory structure and a preview of its content.
-          </li>
-          <li>
-            Expert-Provided Knowledge, which includes explanations for scientific terms, formulas to conduct analysis, and example usages of programming tools.
-          </li>
-          <li>
-            Annotated Program, which is adapted from an open-source code repository released by a peer-reviewed scientific publication
-          </li>
-        </ol>
+        AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper.
+        If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
       </p>
-    </strong>
-      <!-- 结果轮播 -->
-      <div class="carousel results-carousel" id="results-carousel">
-      </div>
-
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>Example tasks in AutoSDT.</p>
-        </div>
-      </div>
-
-      <br />
-
-      <section class="section">
-        <div class="container">
-          <h2 class="title is-3 has-text-centered">Evaluation</h2>
-      
-          <div class="content">
-            <p>
-              We comprehensively evaluate <strong>AutoSDT</strong> from both automatic and human perspectives:
-            </p>
-            <ul>
-              <li>
-                <strong>Automatic Evaluation:</strong> We use <em>success rate (SR)</em>, <em>verification rate (VER)</em>, and <em>hypothesis matching score (HMS)</em>, along with code-level similarity metrics including <em>Exact Match (EM)</em> and <em>CodeBLEU</em>, to assess whether the synthesized Python programs solve the assigned scientific tasks accurately and reliably.
-              </li>
-              <li>
-                <strong>Human Evaluation:</strong> We sample 256 tasks and invite domain experts to judge the quality of instructions and solutions. Results show that <strong>93%</strong> of tasks are ecologically valid, and <strong>92.2%</strong> of programs are functionally correct.
-              </li>
-              <li>
-                <strong>Downstream Performance:</strong> Models trained on AutoSDT-5K, dubbed <em>AutoSDT-Coder</em>, achieve strong performance on two challenging discovery benchmarks.
-              </li>
-            </ul>
-          </div>
-      
-          <!-- Table 2: Human Evaluation -->
-          <div class="columns is-centered" style="margin-bottom: 2rem;">
-            <div class="column is-half has-text-centered">
-              <img src="AutoSDT-figures/table2.png" alt="Table 2: Human evaluation of ecological validity and functional correctness" style="max-width: 100%; border: 1px solid #ccc;" />
-              <p><strong>Table 2:</strong> Human evaluation confirms 93% ecological validity and 92.2% functional correctness across 256 sampled tasks.</p>
-            </div>
-          </div>
-      
-          <!-- Table 3: Fine-tuning Comparison -->
-          <div class="columns is-centered">
-            <div class="column is-three-quarters has-text-centered">
-              <img src="AutoSDT-figures/table3.png" alt="Table 3: Model performance before and after fine-tuning on AutoSDT-5K" style="max-width: 100%; border: 1px solid #ccc;" />
-              <p><strong>Table 3:</strong> Fine-tuning on AutoSDT-5K significantly improves the performance of Qwen2.5-based open-weight models on scientific discovery tasks.</p>
-            </div>
-          </div>
-      
-        </div>
-      </section>
-
-      <br />
-
-      <h2 class="title is-3 has-text-centered">Comparison with Existing Benchmarks</h2>
-      <div class="container">
-          <p>
-            AutoSDT introduces a new paradigm for benchmark construction by leveraging large language models (LLMs) to automatically mine and adapt real-world scientific code. Compared to existing benchmarks, it offers distinct advantages across multiple dimensions:
-          </p>
-          <ul>
-            <li>
-              <strong>Construction Method:</strong> Existing benchmarks like <em>ScienceAgentBench</em> and <em>DiscoveryBench</em> rely on manual task design. In contrast, <strong>AutoSDT</strong> is constructed automatically via LLM-driven code mining and adaptation.
-            </li>
-            <li>
-              <strong>Scale and Domain Diversity:</strong> AutoSDT-5K includes <strong>5,404</strong> tasks across four scientific domains and <strong>756</strong> unique Python packages, making it the largest ecologically valid dataset of its kind.
-            </li>
-            <li>
-              <strong>Ecological Validity:</strong> Tasks in AutoSDT are derived from real-world codebases used in scientific publications, ensuring high authenticity. Human evaluation confirms <strong>93%</strong> of tasks are ecologically valid.
-            </li>
-            <li>
-              <strong>Downstream Model Performance:</strong> Fine-tuning on AutoSDT enables open-weight models like AutoSDT-Coder-32B to match the performance of proprietary models such as GPT-4o on ScienceAgentBench and significantly boost hypothesis matching on DiscoveryBench.
-            </li>
-          </ul>
-        </div>
-      
-        <!-- Table 4: Model performance -->
-        <div class="columns is-centered">
-          <div class="column is-half has-text-centered">
-            <img src="AutoSDT-figures/table4.png" alt="Table 4: AutoSDT-Coder vs other models on existing benchmarks" style="max-width: 100%; border: 1px solid #ccc;" />
-            <p><strong>Table 4:</strong> Comparison of model performance on ScienceAgentBench and DiscoveryBench. AutoSDT-Coder-32B achieves the highest performance among open-weight models and narrows the gap with proprietary models.</p>
-          </div>
-        </div>
-
-      <br />
-      <section class="section" id="BibTeX">
-        <div class="container is-max-desktop content">
-          <h2 class="title is-3 has-text-centered">Disclaimer</h2>
-          <p>
-            AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper.
-            If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
-          </p>
-        </div>
-      </section>
+    </div>
+  </section>
 
 
   <!-- @PAN TODO: bibtex -->
