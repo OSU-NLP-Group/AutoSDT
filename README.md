@@ -129,12 +129,12 @@ We ensure that all 1325 repositories composing the final tasks in AutoSDT-5K all
 | Eclipse          | 1                |
 | PolyForm         | 1                |
 | Mulan            | 1                |
-| Other            | 15               |
+| Other (Custom)           | 15               |
 
 We manually checked the remaining 15 repositories with custom licenses and ensured that they all allow academic and non-commercial use:
 
 
-| **Repositories**                           |
+| **Repositories with Custom Licenses**                           |
 |--------------------------------------------|
 | GabrieleLozupone/AXIAL                     |
 | fhalab/MLDE                                |
