@@ -156,7 +156,7 @@ There are also 317 repositories without any license information. We assume that 
 
 ## License
 
-Code under this repo is licensed under a MIT License.
+Code under this repo is licensed under MIT License.
 
 ## Citation
 Please cite our paper if you use our data, model, or code.
