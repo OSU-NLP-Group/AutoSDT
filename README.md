@@ -11,7 +11,7 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 
 <br>
 <div align="center">
-  <img src="AutoSDT_github.png" width="80%" title="Introduction Figure">
+  <img src="figures/AutoSDT_github.png" width="80%" title="Introduction Figure">
 </div>
 
 ## Table-of-Contents
@@ -36,7 +36,7 @@ AutoSDT leverages the coding capabilities and parametric knowledge of large lang
 
 Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance of GPT-4o (2024-05-13):
 <div align="left">
-  <img src="AutoSDT-Fig1.png" width="60%" title="Figure1">
+  <img src="figures/AutoSDT-Fig1.png" width="60%" title="Figure1">
 </div>
 
 ## Installation
