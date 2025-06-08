@@ -1,4 +1,4 @@
-python ../src/prepare_dataset_env.py \
+python ../src/autosdt_select_prepare_env.py \
 --input_jsonl ../result/scientific_python_files_w_dataset.jsonl \
 --repo_base_dir ../../downloaded_repos \
 --benchmark_base_dir ../../benchmark/datasets/ \
