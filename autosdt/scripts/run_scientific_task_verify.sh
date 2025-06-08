@@ -1,4 +1,4 @@
-python ../src/scientific_task_verify.py \
+python ../src/autosdt_select_verify_files.py \
 --llm_engine_name struct_azure_gpt-4o \
 --input_jsonl ../result/python_files.jsonl \
 --repo_base_dir ../../downloaded_repos \
