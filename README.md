@@ -20,8 +20,8 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 - [🚀 AutoSDT-Pipeline](#AutoSDT-Pipeline)
 - [🛠️ Training and Inference](#training-and-inference)
 - [📧 Contact](#contact)
-- [📜 License](#license)
 - [📄 Disclaimer](#disclaimer)
+- [📜 License](#license)
 - [📖 Citation](#citation)
 
 ## Introduction
