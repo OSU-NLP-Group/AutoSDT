@@ -85,7 +85,7 @@ to convert the data format into alpaca training format.
 
 ## Training and Inference
 ### Supervised Fine-tuning
-We use the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) library to conduct SFT experiments. We provide the `.yaml` files within this repo:
+We use the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) library to conduct SFT experiments. We provide the `.yaml` files in the `models/` folder in this repo:
 
 ```python
 -- qwen2.5-coder-7b-instruct_full_sft.yaml
@@ -110,49 +110,53 @@ to compute the final results.
 ## Contact
 [Yifei Li](mailto:li.14042@osu.edu), [Hanane Nour Moussa](mailto:moussa.45@osu.edu), [Huan Sun](mailto:sun.397@osu.edu), The Ohio State University
 
-## License
+## Disclaimer
+
+AutoSDT creates tasks based on open-source code and data, and we respect the creators’ ownership and intellectual property. We have made our best effort to ensure that the repositories included in AutoSDT-5K have permissive licenses allowing for academic use. We provide more details in Appendix G.
 
 We ensure that all 1325 repositories composing the final tasks in AutoSDT-5K allow for non-proprietary use. We list the licenses and the number of corresponding repositories in the following table:
 
-| License        | # of Repositories |
-|----------------|-------------------|
-| MIT            | 507               |
-| GNU            | 247               |
-| Apache         | 145               |
-| BSD            | 84                |
-| Boost          | 4                 |
-| Public Domain  | 3                 |
-| ISC            | 1                 |
-| Eclipse        | 1                 |
-| Other (Custom) | 16                |
+| **License**      | **Repositories** |
+|------------------|------------------|
+| MIT              | 449              |
+| GNU              | 247              |
+| Apache           | 145              |
+| BSD              | 84               |
+| CC               | 57               |
+| Boost            | 4                |
+| Public Domain    | 3                |
+| ISC              | 1                |
+| Eclipse          | 1                |
+| PolyForm         | 1                |
+| Mulan            | 1                |
+| Other            | 15               |
 
-We manually checked the remaining 16 repositories with custom licenses and ensured that they all allow academic and non-commercial use:
+We manually checked the remaining 15 repositories with custom licenses and ensured that they all allow academic and non-commercial use:
 
-| Repository                              |
-|------------------------------------------|
-| GabrieleLozupone/AXIAL                  |
-| fhalab/MLDE                              |
-| snacktavish/TreeToReads                  |
-| ninglab/G2Retro                          |
-| usnistgov/SDNist                         |
-| CSi-Studio/3D-MSNet                      |
-| SNU-LIST/QSMnet                          |
-| pygbe/pygbe                              |
-| Ramprasad-Group/polygnn                  |
-| gdalessi/OpenMORe                        |
-| svalkiers/clusTCR                        |
-| AI-sandbox/SALAI-Net                     |
-| pixelite1201/agora_evaluation           |
-| jsunn-y/PolymerGasMembraneML            |
-| spectrochempy/spectrochempy              |
-| usnistgov/atomgpt                        |
+
+| **Repositories**                           |
+|--------------------------------------------|
+| GabrieleLozupone/AXIAL                     |
+| fhalab/MLDE                                |
+| snacktavish/TreeToReads                    |
+| usnistgov/SDNist                           |
+| ruppinlab/CSI-Microbes-identification      |
+| fenchri/edge-oriented-graph                |
+| SNU-LIST/QSMnet                            |
+| Ramprasad-Group/polygnn                    |
+| gdalessi/OpenMORe                          |
+| svalkiers/clusTCR                          |
+| AI-sandbox/SALAI-Net                       |
+| pixelite1201/agora_evaluation              |
+| jsunn-y/PolymerGasMembraneML               |
+| spectrochempy/spectrochempy                |
+| usnistgov/atomgpt                          |
 
 There are also 317 repositories without any license information. We assume that these repositories are permissive for academic purposes.
 
-Code under this repo is licensed under a MIT License.
+## License
 
-## Disclaimer
-AutoSDT is constructed from publicly available scientific data, publications, and open-source code repositories. We have made every effort to cite original sources and respect the intellectual property of their creators. Details including references and licenses are provided in Appendix I of the AutoSDT paper. If any repository owner wishes to request removal or correction of relevant content, we welcome communication to ensure proper attribution and compliance.
+Code under this repo is licensed under a MIT License.
 
 ## Citation
 Please cite our paper if you use our data, model, or code.
