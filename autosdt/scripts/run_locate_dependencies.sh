@@ -1,4 +1,4 @@
-python ../src/locate_dataset.py \
+python ../src/autosdt_select_locate_dependencies.py \
 --llm_engine_name struct_azure_gpt-4o \
 --input_jsonl ../result/scientific_python_files.jsonl \
 --repo_base_dir ../../downloaded_repos \
