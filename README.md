@@ -34,7 +34,7 @@ AutoSDT leverages the coding capabilities and parametric knowledge of large lang
 
 ### Highlights
 
-Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves the same level of performance as GPT-4o (2024-05-13):
+Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance of GPT-4o (2024-05-13):
 <div align="left">
   <img src="AutoSDT-Fig1.png" width="60%" title="Figure1">
 </div>
