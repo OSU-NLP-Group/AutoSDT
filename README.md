@@ -112,7 +112,7 @@ to compute the final results.
 
 ## Disclaimer
 
-AutoSDT creates tasks based on open-source code and data, and we respect the creators' ownership and intellectual property. We have made our best effort to ensure that the repositories included in AutoSDT-5K have permissive licenses allowing for academic use. We provide more details in Appendix G in the paper. We welcome requests from the original authors to modify or remove relevant tasks related to those two repositories if needed.
+AutoSDT creates tasks based on open-source code and data, and we respect the creators' ownership and intellectual property. We have made our best effort to ensure that the repositories included in AutoSDT-5K have permissive licenses allowing for academic use. We provide more details in Appendix G in the paper. We welcome requests from the original authors to modify or remove relevant tasks related to their repositories if needed.
 
 We ensure that all 1325 repositories composing the final tasks in AutoSDT-5K allow for academic use. We list the licenses and the number of corresponding repositories in the following table:
 
