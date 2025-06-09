@@ -19,7 +19,7 @@ Our AutoSDT collects data-driven discovery tasks in three steps: (1) **AutoSDT-S
 
 Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance of GPT-4o (2024-05-13):
 <div align="center">
-  <img src="figures/AutoSDT-Fig1.png" width="60%" title="Figure1">
+  <img src="figures/AutoSDT-Fig1.png" width="75%" title="Figure1">
 </div>
 
 ## Table-of-Contents
