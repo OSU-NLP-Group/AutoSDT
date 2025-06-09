@@ -23,7 +23,7 @@ Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance o
 </div>
 
 ## Table-of-Contents
-- [📌 Introduction](#introduction)
+- [📌 Overview](#overview)
 - [⚙️ Installation](#installation)
 - [🚀 AutoSDT-Pipeline](#AutoSDT-Pipeline)
 - [🛠️ Training and Inference](#training-and-inference)
@@ -32,7 +32,7 @@ Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance o
 - [📜 License](#license)
 - [📖 Citation](#citation)
 
-## Introduction
+## Overview
 Despite long-standing efforts in accelerating scientific discovery with AI, building reliable AI co-scientists remains challenging due to the lack of high-quality data for training and evaluation. To address this data scarcity problem, we introduce AutoSDT—an automatic pipeline that collects high-quality coding tasks from real-world data-driven discovery workflows.
 
 AutoSDT leverages the coding capabilities and parametric knowledge of large language models (LLMs) to search from diverse sources, identify ecologically valid scientific tasks, and synthesize both task instructions and code solutions automatically. Using this pipeline, we construct AutoSDT-5K, a dataset of 5,404 scientific coding tasks spanning four scientific disciplines (bioinformatics, computational chemistry, geographical information science, and psychology and cognitive neuroscience) and using 756 unique Python packages.
