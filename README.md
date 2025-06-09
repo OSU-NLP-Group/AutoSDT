@@ -12,13 +12,12 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 <br>
 
 Our AutoSDT collects data-driven discovery tasks in three steps: (1) **AutoSDT-Search** generates a list of keywords for each discipline and searches for relevant repositories. (2) **AutoSDT-Select** identifies programs that represent data-driven discovery tasks and extracts their execution dependency folders. (3) **AutoSDT-Adapt** modifies the selected programs to be independently executable and generates their corresponding task instructions.
-
 <div align="center">
   <img src="figures/AutoSDT_github.svg" width="95%" title="Introduction Figure">
 </div>
 
-Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance of GPT-4o (2024-05-13):
 
+Fine-tuned on AutoSDT-5K, AutoSDT-Coder-32B achieves surpasses the performance of GPT-4o (2024-05-13):
 <div align="left">
   <img src="figures/AutoSDT-Fig1.png" width="60%" title="Figure1">
 </div>
