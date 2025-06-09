@@ -11,7 +11,7 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 
 <br>
 <div align="center">
-  <img src="figures/AutoSDT_github.svg" width="80%" title="Introduction Figure">
+  <img src="figures/AutoSDT_github.svg" width="95%" title="Introduction Figure">
 </div>
 
 ## Table-of-Contents
