@@ -57,6 +57,27 @@
           margin: 0;
           max-height: none;
       }
+      .responsive-img-50 {
+        width: 50%;
+      }
+      .responsive-img-85 {
+        width: 85%;
+      }
+      .responsive-img-65 {
+        width: 65%;
+      }
+
+      @media (max-width: 768px) {
+        .responsive-img-50 {
+          width: 100%;
+        }
+        .responsive-img-85 {
+          width: 100%;
+        }
+        .responsive-img-65 {
+          width: 100%;
+        }
+      }
   </style>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -240,7 +261,7 @@
               <span class="author-block">† The Ohio State University</span>
               <br>
               <span class="author-block">
-                * Correspondance to 
+                * Equal Contribution. Correspondance to 
                 <a href="mailto:li.14042@osu.edu">li.14042@osu.edu</a>, 
                 <a href="mailto:moussa.45@osu.edu">moussa.45@osu.edu</a>, 
                 <a href="mailto:sun.397@osu.edu">sun.397@osu.edu</a>
@@ -323,7 +344,7 @@
              <!-- Figure 1: Bar chart -->
              <div>
               <div style="text-align: center; width: 100%;">
-                <img src="AutoSDT-figures/AutoSDT-Fig1.svg" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 50%;"/>
+                <img src="AutoSDT-figures/AutoSDT-Fig1.svg" style="max-width: 50%;" class="responsive-img-50"/>
                 <!-- <img src="AutoSDT-figures/AutoSDT-Fig1.svg" alt="Figure 1: AutoSDT-Coder vs other LLMs on ScienceAgentBench" style="max-width: 100%; border: 1px solid #ddd; box-shadow: 0 0 6px rgba(0,0,0,0.1);" /> -->
               </div>
               <p>Figure 1: Performance of our <b>AutoSDT-Coder</b> in comparison to other open-weight and proprietary LLMs on ScienceAgentBench. Fine-tuned on <b>AutoSDT-5K</b> based with Qwen2.5-32B-Coder-Instruct, <b>AutoSDT-Coder-32B</b> achieves the same level of performance as GPT-4o (2024-05-13).</p>
@@ -340,7 +361,7 @@
             </div>
             <br>
             <div style="text-align: center;">
-              <img src="AutoSDT-figures/Fig2-AutoSDT.svg" alt="AutoSDT Pipeline" width="85%" />
+              <img src="AutoSDT-figures/Fig2-AutoSDT.svg" alt="AutoSDT Pipeline" width="85%" class="responsive-img-85"/>
             </div>
             <p> Figure 2: Our <b>AutoSDT</b> pipeline collects data-driven discovery tasks in three steps: (1) <b>AutoSDT-Search</b> generates a list of keywords for each discipline and searches for relevant repositories. (2) <b>AutoSDT-Select</b> identifies programs that represent data-driven discovery tasks and extracts their execution dependency folders. (3) <b>AutoSDT-Adapt</b> modifies the selected programs to be independently executable and generates their corresponding task instructions. Our pipeline finally results in <b>AutoSDT-5K</b>, a dataset of 5,404 ecologically valid scientific tasks, each paired with a task instruction and runnable code solution.</p>
             <br><br><br><br>
@@ -354,12 +375,12 @@
             <br>
             <div class="columns">
               <div class="column">
-                <img src= "AutoSDT-figures/Fig3a.png" width="95%">
-                <p style="width:85%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
+                <img src= "AutoSDT-figures/Fig3a.png" width="100%">
+                <p style="width:100%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
               </div>
               <div class="column">
-                <img src="AutoSDT-figures/Fig3b.png" width="95%"/>
-                <p style="width:85%; text-align: left;">Figure 3b: Examples of packages in
+                <img src="AutoSDT-figures/Fig3b.png" width="100%"/>
+                <p style="width:100%; text-align: left;">Figure 3b: Examples of packages in
                   AutoSDT-5K, including general-purpose toolkits and domain-specific packages for bioinformatics, computational chemistry, geographic information science, and psychology and cognitive neuroscience.</p>
               </div>
             </div>
@@ -370,12 +391,12 @@
             <br>
             <div class="columns">
               <div class="column">
-                <img src= "AutoSDT-figures/table1.png" width="75%">
-                <p style="width:85%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
+                <img src= "AutoSDT-figures/table1.png" width="100%">
+                <p style="width:100%; text-align: left;">Figure 3a: Tasks in AutoSDT-5K are multi-step research workflows covering operations ranging from data preprocessing to more advanced analytics.</p>
               </div>
               <div class="column">
-                <img src="AutoSDT-figures/table2.png" width="95%"/>
-                <p style="width:85%; text-align: left;">Figure 3b: Examples of packages in
+                <img src="AutoSDT-figures/table2.png" width="100%"/>
+                <p style="width:100%; text-align: left;">Figure 3b: Examples of packages in
                   AutoSDT-5K, including general-purpose toolkits and domain-specific packages for bioinformatics, computational chemistry, geographic information science, and psychology and cognitive neuroscience.</p>
               </div>
             </div>
@@ -414,7 +435,7 @@
               </ul>
               <br>
               <div style="text-align: center;">
-                <img src="AutoSDT-figures/table3.png" style="max-width: 98%; "/>
+                <img src="AutoSDT-figures/table3.png" style="max-width: 100%; "/>
               </div>
               <p style="width: 100%;">Table 3: Results of different-sized Qwen2.5-Coder-Instruct models on ScienceAgentBench and DiscoveryBench. All results are generated with zero-shot direct prompting.</p>
               <br>
@@ -423,7 +444,7 @@
               <p>Our models outperform open-weight models of significantly larger size; for example, AutoSDT-Coder-32B achieves more than double the performance of the Llama-3.1-Instruct-405B model. Moreover, AutoSDT-Coder-32B outperforms GPT-4o (2024-05-13) and rivals the performance of Claude-3.5-Sonnet-v1 and GPT-4o (2024-11-20). These results show the effectiveness of AutoSDT-5K in generating high-quality scientific data and its potential to train truly open-weight and open-data co-scientist agents. However, we also observe that there is still a large gap with reasoning models (models that incorporate a "thinking" or "chain-of-thought" process before generating the final answer) like OpenAI-o1 and Claude-3.7-Sonnet . We believe that boosting our data with high-quality reasoning trajectories could be a promising direction to explore and leave it as a future work.</p>
               <br>
               <div style="text-align: center;">
-                <img src="AutoSDT-figures/table4.png" style="max-width: 48%; "/>
+                <img src="AutoSDT-figures/table4.png" style="max-width: 50%;" class="responsive-img-50"/>
               </div>
               <p style="width: 100%; text-align: center;">Table 4: Performance comparison among different models on ScienceAgentBench.</p>
               <br>
@@ -437,7 +458,7 @@
               <!-- Figure: Scaling -->
               <p>The 14B model exhibits noticeable gains up to 2.5k examples, after which further scaling does not yield improvement, suggesting the onset of performance saturation. In contrast, the 32B model continues to benefit from additional data, achieving higher success rates as the training set increases to 5k+. This analysis suggests that performance gains from scaling up training data become limited for smaller models, while larger models are able to better utilize increased data for further improvement. Such scaling behavior is consistent with <a href="">previous findings</a>, which report that the 14B model saturates at approximately 800 training trajectories for addressing software engineering issues, while the 32B still benefits from more training trajectories.</p>
               <div style="text-align: center;">
-                <img src="AutoSDT-figures/scaling.svg" style="max-width: 65%; "/>
+                <img src="AutoSDT-figures/scaling.svg" style="max-width: 65%;" class="responsive-img-65"/>
               </div>
               <p>Figure 4: Impact of training set size on ScienceAgentBench performance for AutoDCT-Coder-14B and AutoDCT-Coder-32B. Shaded areas indicate standard deviation across three runs.</p>
             </div>
@@ -461,7 +482,7 @@
                 
                 <br>
                 <div style="text-align: center;">
-                  <img src="AutoSDT-figures/existing_benchmarks.png" style="max-width: 90%; "/>
+                  <img src="AutoSDT-figures/existing_benchmarks.png" style="max-width: 90%;" class="responsive-img-90"/>
                 </div>
                 <p>Figure 5: Dataset statistics of AutoSDT-5K compared to related datasets. Columns show the number of instances, number of subject domains, and whether the dataset is oriented towards scientific disciplines, based on naturally-occurring code, and automatically collected.</p>
             </div>
