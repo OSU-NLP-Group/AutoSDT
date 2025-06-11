@@ -4,7 +4,7 @@ Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists.
 
 <p align="center">
 [<a href="https://osu-nlp-group.github.io/AutoSDT/">Website</a>] •
-[<a href="">Paper</a>] •
+[<a href="https://arxiv.org/abs/2506.08140">Paper</a>] •
 [<a href="https://huggingface.co/datasets/osunlp/AutoSDT-5K">Dataset</a>] •
 [<a href="">Twitter</a>]
 </p>
@@ -161,4 +161,15 @@ There are also 317 repositories without any license information. We assume that 
 Code under this repo is licensed under MIT License.
 
 ## Citation
-Please cite our paper if you use our data, model, or code.
+Please cite our paper if you use our data, models, or code.
+
+```bibtex
+@misc{li2025autosdtscalingdatadrivendiscovery,
+      title={AutoSDT: Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists}, 
+      author={Yifei Li and Hanane Nour Moussa and Ziru Chen and Shijie Chen and Botao Yu and Mingyi Xue and Benjamin Burns and Tzu-Yao Chiu and Vishal Dey and Zitong Lu and Chen Wei and Qianheng Zhang and Tianyu Zhang and Song Gao and Xuhui Huang and Xia Ning and Nesreen K. Ahmed and Ali Payani and Huan Sun},
+      year={2025},
+      eprint={2506.08140},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2506.08140}, 
+}
