@@ -59,11 +59,12 @@ source ~/.bashrc
 ```
 
 ### AutoSDT-Search: Search for research related repositories
+
 ```python
 cd autosdt/scripts
 bash run_search.sh
 ```
-
+And specify discipline keywords in `base_keywords` argument.
 ### AutoSDT-Select: Crawl python files, verify that they represent data-driven scientific tasks, and prepare their workspaces
 ```python
 bash run_crawl_files.sh
