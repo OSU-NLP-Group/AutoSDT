@@ -325,6 +325,7 @@ def main ():
     parser.add_argument("--llm_engine_name", type=str, default="azure_gpt-4o", help="Name of the LLM model to use.")
     parser.add_argument("--output_csv", type=str, required=True, help="Path to the output JSONL file.", default="../../repo_list/repositories.csv")
     parser.add_argument("--api_version", type=str, default="2024-10-21", help="API version for Azure OpenAI.")
+    parser.add_argument("--base_keywords", type=str, required=True, help="Comma-separated list of base keywords for the search.")
     args = parser.parse_args()
 
     if "azure_" in args.llm_engine_name:
@@ -336,13 +337,7 @@ def main ():
                                 azure_endpoint=azure_endpoint, api_version=api_version)
     
 
-    base_keywords = [
-        "bioinformatics",
-        "psychology",
-        "neuroscience",
-        "chemistry",
-        "geographic information science"
-    ]
+    base_keywords = [keyword.strip() for keyword in args.base_keywords.split(",")]
 
     # Orchestrate the search process
     orchestrate_search(base_keywords, os.environ.get("GITHUB_TOKEN"), llm_engine, args.output_csv)
