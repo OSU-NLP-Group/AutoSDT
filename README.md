@@ -161,7 +161,7 @@ There are also 317 repositories without any license information. We assume that 
 Code under this repo is licensed under MIT License.
 
 ## Citation
-Please cite our paper if you use our data, models, or code.
+Please cite our paper (and star our repo!) if you use our data, models, or code.
 
 ```bibtex
 @misc{li2025autosdtscalingdatadrivendiscovery,
